@@ -1,10 +1,6 @@
 <?php
-    
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $db_name = "guestbook";
+    require 'loadCred.php';
 
-    $connect = new mysqli($host,$user,$pass,$db_name);
-    
+    $connect = new mysqli($config['DB_HOST'],$config['DB_USERNAME'],$config['DB_PASSWORD'],$config['DB_DATABASE']);
+
 ?>
