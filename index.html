@@ -6,35 +6,38 @@
     <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container-xl d-flex flex-row-reverse">
             <div class="p-2 bd-highlight">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" id="addButton">
                     Add Guestbook
                 </button>
             </div>
         </div>
     </nav>
+    
+    <div class="container-xl" id="alertdiv"></div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add Guestbook</h5>
+              <h5 class="modal-title" id="addModalLabel">Add Guestbook</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <div id="modalAlertDiv"></div>
+                <form id="form">
                     <div class="mb-3">
                       <label for="name" class="form-label">Name</label>
-                      <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                      <input type="text" required class="form-control" id="name" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                       <label for="message" class="form-label">Message</label>
-                      <input type="text" class="form-control" id="message">
+                      <input type="text" required class="form-control" id="message">
                     </div>
-                  </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" id="submit">Submit</button>
+              <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+            </form>
             </div>
           </div>
         </div>
@@ -46,7 +49,7 @@
             Refresh
         </button>
     </div>
-    <div class="container-xl table-responsive">
+    <div class="container-xl table-responsive" style="min-height: 82vh;">
         <table class="table table-hover align-middle table-striped">
             <thead>
               <tr>
@@ -67,9 +70,23 @@
               </template>
             </tbody>
         </table>
+
+        
     </div>
 
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+          <span class="text-muted">Copyright &copy Vincent Tjianattan</span>
+        </div>
+    </footer>
 
+    <template id="errorAlert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </template>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
