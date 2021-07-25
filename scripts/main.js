@@ -28,13 +28,13 @@ $(function(){
     }
 
     function loadtable(){
-        $guestbook_target.empty();
         $.ajax({
             type: "GET",
             url: "./controllers/getGuestBook.php",
             dataType: "JSON",
             success: function(res){
                 if(res.error==0){
+                    $guestbook_target.empty();
                     $row = res.result;
                     $.each($row, function(i,data){
                         renderTable(data);
