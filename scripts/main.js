@@ -94,6 +94,10 @@ $(function(){
         loadtable();
     });
 
+    setInterval(function(){ 
+        loadtable();
+    }, 60000);
+
     $form.on("submit", function(e){
         $modalAlertDiv.empty();
         e.preventDefault();
