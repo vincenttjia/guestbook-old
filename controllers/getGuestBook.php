@@ -1,18 +1,19 @@
 <?php
-require 'database.php';
 
-$q = $connect->prepare("SELECT * FROM guestbook ORDER BY ID DESC");
-$q->execute();
-$res = $q->get_result();
-$q->close();
+    require 'database.php';
 
-$res1 = [];
+    $q = $connect->prepare("SELECT * FROM guestbook ORDER BY ID ASC");
+    $q->execute();
+    $res = $q->get_result();
+    $q->close();
 
-while($temp = $res->fetch_assoc()){
-    $res1[] = $temp;
-}
+    $res1 = [];
 
-$response = array("error" => "0", "result" => $res1);
-echo json_encode($response);
+    while($temp = $res->fetch_assoc()){
+        $res1[] = $temp;
+    }
+
+    $response = array("error" => "0", "result" => $res1);
+    echo json_encode($response);
 
 ?>
