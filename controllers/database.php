@@ -14,4 +14,11 @@
 
     $connect = new mysqli($config['DB_HOST'],$config['DB_USERNAME'],$config['DB_PASSWORD'],$config['DB_DATABASE']);
 
+    if ($connect->connect_error) {
+        
+        $config = json_decode(get_credentials(),true);
+
+        $connect = new mysqli($config['DB_HOST'],$config['DB_USERNAME'],$config['DB_PASSWORD'],$config['DB_DATABASE']);
+    }
+
 ?>
