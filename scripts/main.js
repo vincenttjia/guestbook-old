@@ -37,6 +37,7 @@ $(function(){
                     $guestbook_target.empty();
                     $row = res.result;
                     $.each($row, function(i,data){
+                        data.parsedtime = moment.utc(data.time).utcOffset("+0700").format('DD-MMM-YY HH:mm:ss')
                         renderTable(data);
                     })
                 }else{
