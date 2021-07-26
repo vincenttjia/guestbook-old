@@ -34,17 +34,20 @@ $(function(){
             dataType: "JSON",
             success: function(res){
                 if(res.error==0){
-                    $guestbook_target.empty();
                     $row = res.result;
+                    $guestbook_target.empty();
                     $.each($row, function(i,data){
                         data.parsedtime = moment.utc(data.time).utcOffset("+0700").format('DD-MMM-YY HH:mm:ss')
                         renderTable(data);
                     })
+                    $refresh.prop('disabled', false);
                 }else{
                     renderAlert("Undefined Error");
+                    $refresh.prop('disabled', false);
                 }
             },
             error: function(err){
+                $refresh.prop('disabled', false);
                 renderAlert("Please check your internet connection");
             }
         })
@@ -92,12 +95,13 @@ $(function(){
     loadtable();
 
     $refresh.on("click",function(){
+        $refresh.prop('disabled', true);
         loadtable();
     });
 
     setInterval(function(){ 
         loadtable();
-    }, 60000);
+    }, 5000);
 
     $form.on("submit", function(e){
         $modalAlertDiv.empty();
