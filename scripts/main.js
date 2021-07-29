@@ -11,6 +11,7 @@ $(function(){
     $addModal = $("#addModal");
     $addButton = $("#addButton");
     $form = $("#form");
+    $address = $("#address");
 
 
     function renderTable($data){
@@ -59,7 +60,8 @@ $(function(){
             url: "./controllers/addGuestBook.php",
             data: {
                 name: $name.val(),
-                content: $message.val()
+                content: $message.val(),
+                address: $address.val()
             },
             dataType: "JSON",
             success: function(res){
@@ -69,6 +71,7 @@ $(function(){
                     $addModal.modal('hide');
                     $name.val("");
                     $message.val("");
+                    $address.val("");
                     $submit.prop('disabled', false);
                 }else{
                     $submit.prop('disabled', false);

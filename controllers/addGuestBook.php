@@ -15,11 +15,19 @@
         die();
     }
 
+    
+    if(!empty(trim($_POST['address']))){
+        $address  = $_POST['address'];
+    }else{
+        echo json_encode(array("error" => "1","message" => "Address can not be empty"));
+        die();
+    }
+
     $affected_rows=0;
 
 
-    $q = $connect->prepare("INSERT INTO `guestbook` VALUES ('',?,?,now())");
-    $q->bind_param('ss',$name,$content);
+    $q = $connect->prepare("INSERT INTO `guestbook` VALUES ('',?,?,?,now())");
+    $q->bind_param('sss',$name,$content,$address);
     $q->execute();
     $affected_rows = $q->affected_rows;
     $q->close();

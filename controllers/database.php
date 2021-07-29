@@ -13,6 +13,7 @@
     }
 
     $connect = new mysqli($config['DB_HOST'],$config['DB_USERNAME'],$config['DB_PASSWORD'],$config['DB_DATABASE']);
+    // $connect = new mysqli('localhost','root','','guestbook');
 
     if ($connect->connect_error) {
         
